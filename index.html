@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width-device-width", initial-scale="1.0"> 
+        <link rel="stylesheet" href="style.css"> 
+        <title>TV Shows</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <div id="topbar">
+                <h1>TV Show Tracker</h1>
+            </div>
+            <div class="row-body" v-for="(show, index) in shows">
+                <div>{{ show.title }}</div>
+                <div>{{ show.seasons }}</div>
+                <div>{{ show.genre }} </div>
+                <div class="button-container">
+                    <button @click="deleteShow(index)">Delete</button>
+                    <button>Edit</button>
+                </div>
+            </div>
+            <div id="bottombar">
+                Need to add something? Add it here:
+
+                <form class="add-form" @submit.prevent="addShow()">
+                    <label class="label-input">
+                        <span>Title</span>
+                        <input type="text" class="form-input" v-model="newTVShow.title"/>
+                    </label>
+                    <label class="label-input">
+                        <span>Seasons</span>
+                        <input type="number" class="form-input" v-model="newTVShow.seasons"/>
+                    </label>
+                    <label class="label-input">
+                        <span>Genre</span>
+                        <input type="text" class="form-input" v-model="newTVShow.genre"/>
+                    </label>
+                    <button>Add New</button>
+                </form>
+                <br>
+                <button>Edit All</button>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
